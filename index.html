@@ -1,16 +1,22 @@
 <html>
 <head>
+	<script src="./bower_components/jquery/dist/jquery.js"></script>
 	<script src="./bower_components/angular/angular.js"></script>
-	<script src="./bower_components/angular-route/angular-route.js"></script>
+	<script src="./bower_components/angular-route/angular-route.js"></script>	
+	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+	<script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	
 	<script src="script.js"></script>
 </head>
 <body ng-app="myApp">
+	<div class="col-md-12">
+		<br/><br/>
+		<a class="col-md-1" href="#/">List</a>
+		<a class="col-md-1" href="#/add">Add</a>
+		<a class="col-md-1" href="#/edit">Edit</a>
+		<span class="col-md-9"></span>
 	<div>
-		<a class="col-md-2" href="#/">List</a>
-		<a class="col-md-2" href="#/add">Add</a>
-		<a class="col-md-2" href="#/edit">Edit</a>
-		<span class="col-md-6"></span>
-	<div>
-	<div ng-view></div>
+	<div class="col-md-12" ng-view></div>
 </body>
 </html>
