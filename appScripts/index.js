@@ -14,15 +14,3 @@ app.config(['$routeProvider', function($routeProvider){
 	    controller: 'dtCtrl'
 	});
 }]);
-
-app.controller("listCtrl",function($scope){
-	$scope.msg = "This is the page to list.......";
-});
-
-app.controller("addCtrl",function($scope){
-	$scope.msg = "This is the page to add........";
-});
-
-app.controller("editCtrl",function($scope){
-	$scope.msg = "This is the page to edit.......";
-});

@@ -1,6 +1,7 @@
-﻿var grid2Module = angular.module("Grid2Module", []);
+﻿
+var grid2Module = angular.module("Grid2Module", []);
 
-grid2Module.controller("grid2Ctrl", ["$scope", function ($scope) {
+grid2Module.controller("grid2Ctrl", ["$scope","$modal","$log", function ($scope, $modal, $log) {
 
     $scope.toDoItems = [
     { "projectName": "My Angular Project 1", taskDesc: "to do 1", hours: "3", start: "2014-11-12", end: "2015-01-15" },
@@ -51,7 +52,8 @@ grid2Module.controller("grid2Ctrl", ["$scope", function ($scope) {
         columnDefs: [
             { displayName: "Project Name", field: "projectName" },
             { displayName: "Task Description", field: "taskDesc" },
-            { cellTemplate: "<button data-ng-click='showTask(row)'>Click Me</button>", field: null }
+            { cellTemplate: "<button data-ng-click='showTask(row)'>Click Me</button>", field: null },
+            { cellTemplate: "<button data-ng-click='showTaskModal(row)'>Show Modal</button>", field: null }
         ],
         plugins: [new ngGridFlexibleHeightPlugin()]
     };
@@ -59,6 +61,33 @@ grid2Module.controller("grid2Ctrl", ["$scope", function ($scope) {
     $scope.showTask = function (row) {
         alert('You have selected : '+row.entity.projectName);
     };
+
+    $scope.testModalReturnMsg = "";
+    $scope.showTaskModal = function (row) {
+        var toDoModalInstance = $modal.open({
+            templateUrl: "templates/ToDoItemModal.html",
+            controller: "ToDoModalCtrl",
+            resolve: {
+                ToDoObj: function () {
+                    if (row.entity === "undefined") {
+                        // If nothing selected in ng-grid, null will be returned and cause Angular to think that PatientToEdit is undefined
+                        // return an empty object in order to avoid error
+                        return {};
+                    }
+                    return row.entity;
+                }
+            }
+        });
+
+        toDoModalInstance.result.then(function (updatedItem) {
+            $scope.testModalReturnMsg = updatedItem.projectName + " selected.";
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+
+    };
+
+    
 
     $scope.populateGridItems = function (pageSize, page) {
         console.log(pageSize + "|" + page);
@@ -88,5 +117,21 @@ grid2Module.controller("grid2Ctrl", ["$scope", function ($scope) {
             $scope.currentItem = $scope.selectedItems[0];
         }
     });
+
+}]);
+
+
+grid2Module.controller('ToDoModalCtrl', ['$scope', '$modalInstance','ToDoObj', function ($scope, $modalInstance, ToDoObj) {
+    
+    $scope.projectName = ToDoObj.projectName;
+    $scope.taskDesc = ToDoObj.taskDesc;
+
+    $scope.ok = function() {
+        $modalInstance.close({ projectName: $scope.projectName, taskDesc: $scope.taskDesc });
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
 
 }]);
