@@ -1,5 +1,5 @@
 
-var app = angular.module("myApp", ['ngRoute', 'ngGrid', 'Grid1Module', 'Grid2Module']);
+var app = angular.module("myApp", ['ngRoute', 'ngGrid', 'Grid1Module', 'Grid2Module', 'dtModule']);
 
 app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/',{
@@ -8,9 +8,9 @@ app.config(['$routeProvider', function($routeProvider){
 	}).when('/grid2', {
 	    templateUrl: 'templates/grid2.html',
 	    controller: 'grid2Ctrl'
-	}).when('/edit',{
-		templateUrl:'edit.html',
-		controller:'editCtrl'
+	}).when('/myDT',{
+	    templateUrl: 'templates/myDT.html',
+	    controller: 'dtCtrl'
 	});
 }]);
 
