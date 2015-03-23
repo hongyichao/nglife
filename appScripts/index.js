@@ -1,13 +1,13 @@
 
-var app = angular.module("myApp", ['ngRoute','ngGrid', 'Grid1Module']);
+var app = angular.module("myApp", ['ngRoute', 'ngGrid', 'Grid1Module', 'Grid2Module']);
 
 app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/',{
 	    templateUrl: 'templates/grid1.html',
 	    controller: 'grid1Ctrl'
-	}).when('/add',{
-		templateUrl:'add.html',
-		controller:'addCtrl'
+	}).when('/grid2', {
+	    templateUrl: 'templates/grid2.html',
+	    controller: 'grid2Ctrl'
 	}).when('/edit',{
 		templateUrl:'edit.html',
 		controller:'editCtrl'
