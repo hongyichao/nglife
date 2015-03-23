@@ -1,5 +1,6 @@
 
-var app = angular.module("myApp", ['ngRoute', 'ngGrid', 'Grid1Module', 'Grid2Module', 'dtModule']);
+var app = angular.module("myApp", ['ngRoute', 'ngGrid', 'ui.bootstrap',
+    'Grid1Module', 'Grid2Module', 'dtModule']);
 
 app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/',{
