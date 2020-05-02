@@ -1,0 +1,125 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "HelloAngularWorld": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/HelloAngularWorld",
+      "sourceRoot": "projects/HelloAngularWorld/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/HelloAngularWorld",
+            "index": "projects/HelloAngularWorld/src/index.html",
+            "main": "projects/HelloAngularWorld/src/main.ts",
+            "polyfills": "projects/HelloAngularWorld/src/polyfills.ts",
+            "tsConfig": "projects/HelloAngularWorld/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/HelloAngularWorld/src/favicon.ico",
+              "projects/HelloAngularWorld/src/assets"
+            ],
+            "styles": [
+              "projects/HelloAngularWorld/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/HelloAngularWorld/src/environments/environment.ts",
+                  "with": "projects/HelloAngularWorld/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "HelloAngularWorld:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "HelloAngularWorld:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "HelloAngularWorld:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/HelloAngularWorld/src/test.ts",
+            "polyfills": "projects/HelloAngularWorld/src/polyfills.ts",
+            "tsConfig": "projects/HelloAngularWorld/tsconfig.spec.json",
+            "karmaConfig": "projects/HelloAngularWorld/karma.conf.js",
+            "assets": [
+              "projects/HelloAngularWorld/src/favicon.ico",
+              "projects/HelloAngularWorld/src/assets"
+            ],
+            "styles": [
+              "projects/HelloAngularWorld/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/HelloAngularWorld/tsconfig.app.json",
+              "projects/HelloAngularWorld/tsconfig.spec.json",
+              "projects/HelloAngularWorld/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/HelloAngularWorld/e2e/protractor.conf.js",
+            "devServerTarget": "HelloAngularWorld:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "HelloAngularWorld:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "HelloAngularWorld"
+}

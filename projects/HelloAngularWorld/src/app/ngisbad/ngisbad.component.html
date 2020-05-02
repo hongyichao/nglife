@@ -1,0 +1,6 @@
+<p>Angular is terrible!</p>
+This is why.............
+
+<input tyep='text' id='ngbadreason' [(ngModel)]="ngbadreason" />
+<br/>
+<button [disabled]="ngbadreason === ''" (click)="onRestReasonClick()">Reset input</button>
