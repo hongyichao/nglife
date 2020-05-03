@@ -4,12 +4,14 @@ import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NgisgoodComponent } from './ngisgood/ngisgood.component';
 import { NgisbadComponent } from './ngisbad/ngisbad.component';
+import { NgtouseornotComponent } from './ngtouseornot/ngtouseornot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NgisgoodComponent,
-    NgisbadComponent
+    NgisbadComponent,
+    NgtouseornotComponent,
   ],
   imports: [
     BrowserModule,

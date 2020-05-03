@@ -1,0 +1,12 @@
+<button (click)="useOrNotToUseAngular()">
+  To use Angular or not to use Angualr
+</button>
+
+<p *ngIf="toUseAngular">
+    Angular is great!. Let's start using Angular
+</p>
+
+<br/>
+<div *ngFor="let item of clickCountList; index as i;" [ngStyle]="{backgroundColor: i>=5? 'yellow':'green'}">
+    {{item}}
+</div>
