@@ -120,6 +120,124 @@
           }
         }
       }
+    },
+    "StashGoods": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/StashGoods",
+      "sourceRoot": "projects/StashGoods/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/StashGoods",
+            "index": "projects/StashGoods/src/index.html",
+            "main": "projects/StashGoods/src/main.ts",
+            "polyfills": "projects/StashGoods/src/polyfills.ts",
+            "tsConfig": "projects/StashGoods/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/StashGoods/src/favicon.ico",
+              "projects/StashGoods/src/assets"
+            ],
+            "styles": [
+              "projects/StashGoods/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/StashGoods/src/environments/environment.ts",
+                  "with": "projects/StashGoods/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "StashGoods:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "StashGoods:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "StashGoods:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/StashGoods/src/test.ts",
+            "polyfills": "projects/StashGoods/src/polyfills.ts",
+            "tsConfig": "projects/StashGoods/tsconfig.spec.json",
+            "karmaConfig": "projects/StashGoods/karma.conf.js",
+            "assets": [
+              "projects/StashGoods/src/favicon.ico",
+              "projects/StashGoods/src/assets"
+            ],
+            "styles": [
+              "projects/StashGoods/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/StashGoods/tsconfig.app.json",
+              "projects/StashGoods/tsconfig.spec.json",
+              "projects/StashGoods/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/StashGoods/e2e/protractor.conf.js",
+            "devServerTarget": "StashGoods:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "StashGoods:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "HelloAngularWorld"
 }

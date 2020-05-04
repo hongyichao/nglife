@@ -1,0 +1,10 @@
+<br/>
+<br/>
+<br/>
+<button (click)="startImport()">Start importing goods</button>
+<button (click)="pauseImport()">Pause importing goods</button>
+<br/>
+<hr>
+<br/>
+<app-food *ngFor="let f of foodList" [count]="f"></app-food>
+<app-computer *ngFor="let c of computerList" [count]="c"></app-computer>
