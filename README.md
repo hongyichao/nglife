@@ -4,9 +4,9 @@ This project was generated with [Angular CLI]. The project is developing based o
 
 ## Development server
 
--Run `ng serve --project=HelloAngularWorld`. Navigate to `http://localhost:4200/` to see HelloAngularWorld.
--Run `ng serve --project=StashGoods`. Navigate to `http://localhost:4200/` to see StashGoods.
--Run `ng serve --project=UserService`. Navigate to `http://localhost:4200/` to see UserService.
+- Run `ng serve --project=HelloAngularWorld`. Navigate to `http://localhost:4200/` to see HelloAngularWorld.
+- Run `ng serve --project=StashGoods`. Navigate to `http://localhost:4200/` to see StashGoods.
+- Run `ng serve --project=UserService`. Navigate to `http://localhost:4200/` to see UserService.
 
 The app will automatically reload if you change any of the source files.
 
