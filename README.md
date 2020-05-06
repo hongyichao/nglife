@@ -1,6 +1,7 @@
 # Nglife
 
-This project was generated with [Angular CLI]. The project is developing based on Angular 9
+- This project was generated with [Angular CLI]. The project is developing based on Angular 9.
+- This project includes multiple sub-projects
 
 ## Development server
 
