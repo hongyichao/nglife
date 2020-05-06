@@ -238,6 +238,124 @@
           }
         }
       }
+    },
+    "UserService": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/UserService",
+      "sourceRoot": "projects/UserService/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/UserService",
+            "index": "projects/UserService/src/index.html",
+            "main": "projects/UserService/src/main.ts",
+            "polyfills": "projects/UserService/src/polyfills.ts",
+            "tsConfig": "projects/UserService/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/UserService/src/favicon.ico",
+              "projects/UserService/src/assets"
+            ],
+            "styles": [
+              "projects/UserService/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/UserService/src/environments/environment.ts",
+                  "with": "projects/UserService/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "UserService:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "UserService:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "UserService:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/UserService/src/test.ts",
+            "polyfills": "projects/UserService/src/polyfills.ts",
+            "tsConfig": "projects/UserService/tsconfig.spec.json",
+            "karmaConfig": "projects/UserService/karma.conf.js",
+            "assets": [
+              "projects/UserService/src/favicon.ico",
+              "projects/UserService/src/assets"
+            ],
+            "styles": [
+              "projects/UserService/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/UserService/tsconfig.app.json",
+              "projects/UserService/tsconfig.spec.json",
+              "projects/UserService/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/UserService/e2e/protractor.conf.js",
+            "devServerTarget": "UserService:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "UserService:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "HelloAngularWorld"
 }

@@ -1,0 +1,15 @@
+User Service
+<hr>
+<div *ngFor="let i of logs">
+    {{i}}
+</div>
+<br/>
+<div>Active Users</div>
+<br/>
+<app-user *ngFor="let i of activeUsers" [theUser]=i [status]="'active'"></app-user>
+<br/>
+<hr/>
+<br/>
+<div>Inactive Users</div>
+<br/>
+<app-user *ngFor="let i of inactiveUsers" [theUser]=i [status]="'inactive'"></app-user>
