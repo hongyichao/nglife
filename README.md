@@ -6,6 +6,7 @@
 ## Development server
 
 - Run `ng serve --project=HelloAngularWorld`. Navigate to `http://localhost:4200/` to see HelloAngularWorld.
+  - use data binding
 - Run `ng serve --project=StashGoods`. Navigate to `http://localhost:4200/` to see StashGoods.
   - use @Output() event emitter and @Input()
 - Run `ng serve --project=UserService`. Navigate to `http://localhost:4200/` to see UserService.
