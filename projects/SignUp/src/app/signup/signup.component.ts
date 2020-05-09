@@ -44,6 +44,7 @@ export class SignupComponent implements OnInit {
   }
 
   onUserSignUpFormSubmited() {
+    console.log(this.userRegistration.form.value);
     if (this.mode === 'create') {
       const newUser = this.userRegistration.form.value;
       this.auth.addUser(newUser);
@@ -55,6 +56,7 @@ export class SignupComponent implements OnInit {
       this.theUser.Email = editeUser.Email;
       this.theUser.Phone = editeUser.Phone;
       this.theUser.Password = editeUser.Password;
+      this.theUser.Gender = editeUser.Gender;
 
       this.auth.updateUser(this.theUser);
     }
