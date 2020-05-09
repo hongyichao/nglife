@@ -7,7 +7,9 @@
 
 - Run `ng serve --project=HelloAngularWorld`. Navigate to `http://localhost:4200/` to see HelloAngularWorld.
 - Run `ng serve --project=StashGoods`. Navigate to `http://localhost:4200/` to see StashGoods.
+  - use @Output() event emitter and @Input()
 - Run `ng serve --project=UserService`. Navigate to `http://localhost:4200/` to see UserService.
+  - use service
 - Run `ng serve --project=SignUp`. Navigate to `http://localhost:4200/` to see SignUp.
   - use template-driven NgForm with service and routes to view/add/update users
 
