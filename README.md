@@ -9,7 +9,7 @@
 - Run `ng serve --project=StashGoods`. Navigate to `http://localhost:4200/` to see StashGoods.
 - Run `ng serve --project=UserService`. Navigate to `http://localhost:4200/` to see UserService.
 - Run `ng serve --project=SignUp`. Navigate to `http://localhost:4200/` to see SignUp.
-### use template-driven NgForm with service and routes to view/add/update users
+  -use template-driven NgForm with service and routes to view/add/update users
 
 The app will automatically reload if you change any of the source files.
 
