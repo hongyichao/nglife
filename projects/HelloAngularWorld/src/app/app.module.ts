@@ -11,7 +11,7 @@ import { NgtouseornotComponent } from './ngtouseornot/ngtouseornot.component';
     AppComponent,
     NgisgoodComponent,
     NgisbadComponent,
-    NgtouseornotComponent,
+    NgtouseornotComponent
   ],
   imports: [
     BrowserModule,

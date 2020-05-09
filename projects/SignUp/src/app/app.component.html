@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <br/>
+            <a [routerLink]="['/users/create']">Add New User</a>
+            <br/>
+            <br/>
+            <div *ngFor="let u of users">
+                <a [routerLink]="['/users/', u.Id]">{{u.FirstName}} {{u.LastName}}</a>
+            </div>
+        </div>
+        <div class="col-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
