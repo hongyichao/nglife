@@ -2,22 +2,29 @@
     <div class="row">
         <form (ngSubmit)="onUpdateSubmitted()" [formGroup]="profileForm">
             <div class="form-group">
-                <label for="firstName"></label><input type="text" id="firstName" formControlName="firstName" class="form-control">
+                <label for="firstName">First Name</label><input type="text" id="firstName" formControlName="firstName" class="form-control">
                 <span class="alert alert-danger" *ngIf="profileForm.get('firstName').invalid && profileForm.get('firstName').touched">
                   First Name is required
                 </span>
             </div>
             <div class="form-group">
-                <label for="lastName"></label><input type="text" id="lastName" formControlName="lastName" class="form-control">
+                <label for="lastName">Last Name</label><input type="text" id="lastName" formControlName="lastName" class="form-control">
                 <span class="alert alert-danger" *ngIf="!profileForm.get('lastName').valid && profileForm.get('lastName').touched">
                   Last Name is required
                 </span>
             </div>
             <div class="form-group">
-                <label for="email"></label><input type="text" id="email" formControlName="email" class="form-control">
+                <label for="email">Email</label><input type="text" id="email" formControlName="email" class="form-control">
                 <span class="alert alert-danger" *ngIf="!profileForm.get('email').valid && profileForm.get('email').touched">
                   Email is required
                 </span>
+            </div>
+            <div class="form-group" formArrayName="attributes">
+                <h4>Attributes</h4>
+                <button class="btn btn-secondary" (click)="onAddAttribute()">Add</button>
+                <div *ngFor="let a of attributes;let i = index">
+                    <input type="text" class="form-control" [formControlName]="i">
+                </div>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Update</button>
