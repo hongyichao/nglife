@@ -8,6 +8,14 @@ import { MymessagesComponent } from './mymessages/mymessages.component';
 import { MymessageComponent } from './mymessage/mymessage.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'myprofile/:email', component: MyprofileComponent}
+];
 
 @NgModule({
   declarations: [
@@ -21,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

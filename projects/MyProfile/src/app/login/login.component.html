@@ -8,7 +8,11 @@
                 <label for="password">Password</label><input type="text" class="form-control" id="password" formControlName="password" />
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Login</button> /
+                <button type="button" class="btn btn-outline-primary" (click)="redirectToSignUp()">Register</button>
+            </div>
+            <div class="form-group">
+                <div *ngIf="!authStatus && hasAttemptedLogin">Invalid username or password</div>
             </div>
         </form>
     </div>

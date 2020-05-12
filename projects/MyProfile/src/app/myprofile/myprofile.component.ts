@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { UserService } from '../user.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserProfile } from '../shared-model/userProfile';
 
 @Component({
   selector: 'app-myprofile',
@@ -7,8 +10,8 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./myprofile.component.css']
 })
 export class MyprofileComponent implements OnInit {
-
-  constructor() { }
+  theUser: UserProfile;
+  constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   tmpAttributes: string[] = ['test1','test2','test3'];
 
@@ -20,6 +23,11 @@ export class MyprofileComponent implements OnInit {
   });
 
   ngOnInit() {
+    const userEmail = this.route.snapshot.params['email'];
+    this.theUser = this.userService.getUserByEmail(userEmail);
+
+    console.log(this.theUser);
+
     for(let a of this.tmpAttributes) {
       (<FormArray>this.profileForm.get('attributes')).push(new FormControl(a));
     }
