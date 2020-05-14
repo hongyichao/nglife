@@ -28,8 +28,12 @@ export class MyprofileComponent implements OnInit {
 
     console.log(this.theUser);
 
+    if(!this.theUser){
+      this.theUser = {Id:999, FirstName:'test', LastName:'test', Email:'test', Password:'test'}
+    }
+
     for(let a of this.tmpAttributes) {
-      (<FormArray>this.profileForm.get('attributes')).push(new FormControl(a));
+      (<FormArray>this.profileForm.get('attributes')).push(new FormControl(a, Validators.required));
     }
   }
 
@@ -38,10 +42,24 @@ export class MyprofileComponent implements OnInit {
   }
 
   onUpdateSubmitted() {
-    console.log(this.profileForm);
+
+    if(this.profileForm.status === "VALID") {
+
+    }
+    else {
+      console.log(this.profileForm);
+    }
   }
 
   onAddAttribute() {
-    (<FormArray>this.profileForm.get('attributes')).push(new FormControl('test101'));
+    (<FormArray>this.profileForm.get('attributes')).push(new FormControl(null, Validators.required));
+  }
+
+  validateAttribute(index) {
+    const theAttribute = (<FormArray>this.profileForm.get('attributes')).at(index);
+    if (theAttribute.status === 'INVALID' && theAttribute.touched) {
+      return false;
+    }
+    return true;
   }
 }
