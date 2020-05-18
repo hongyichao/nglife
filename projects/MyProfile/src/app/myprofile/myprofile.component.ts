@@ -44,7 +44,12 @@ export class MyprofileComponent implements OnInit {
   onUpdateSubmitted() {
 
     if(this.profileForm.status === "VALID") {
-
+      console.log(this.profileForm.value);
+      this.theUser.FirstName = this.profileForm.value.firstName;
+      this.theUser.LastName = this.profileForm.value.lastName;
+      this.theUser.Email = this.profileForm.value.email;
+      this.theUser.Attributes = this.profileForm.value.attributes;
+      this.userService.updateUserById(this.theUser);
     }
     else {
       console.log(this.profileForm);

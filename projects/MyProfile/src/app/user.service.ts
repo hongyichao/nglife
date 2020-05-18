@@ -10,6 +10,17 @@ export class UserService {
   userProfiles: UserProfile[] = [];
   constructor() { }
 
+  updateUserById(theUser: UserProfile) {
+
+    let aUser: UserProfile = this.userProfiles.find(u=>u.Id === theUser.Id);
+    console.log('before: '+ aUser);
+    var index = this.userProfiles.findIndex(u=>u.Id === theUser.Id);
+
+    this.userProfiles.splice(index,1,theUser);
+    aUser = this.userProfiles.find(u=>u.Id === theUser.Id);
+    console.log('after: ' + aUser);
+  }
+
   getUserByEmail(email: string) {
     const theUser = this.userProfiles.find(u => u.Email === email);
     return theUser;
