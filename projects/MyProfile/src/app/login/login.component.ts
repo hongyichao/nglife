@@ -21,6 +21,13 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit() {
+    let userSession = sessionStorage.getItem('userAuthSession');
+    if(userSession) {
+      const userAuthSession = JSON.parse(userSession);
+      if(userAuthSession.Status === 'Valid') {
+        this.router.navigate(['/myprofile/' + userAuthSession.Email]);
+      }
+    }
   }
 
   onLoginSubmitted() {

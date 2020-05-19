@@ -32,7 +32,7 @@ export class MyprofileComponent implements OnInit {
       this.theUser = {Id:999, FirstName:'test', LastName:'test', Email:'test', Password:'test'}
     }
 
-    for(let a of this.tmpAttributes) {
+    for(let a of this.theUser.Attributes) {
       (<FormArray>this.profileForm.get('attributes')).push(new FormControl(a, Validators.required));
     }
   }

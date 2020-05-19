@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserSignUp } from './shared-model/userSignUp';
 import { UserProfile } from './shared-model/userProfile';
+import { AuthSession } from './shared-model/authSession';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,12 @@ import { UserProfile } from './shared-model/userProfile';
 export class UserService {
   isLoggedIn = false;
   userProfiles: UserProfile[] = [];
-  constructor() { }
+
+
+  constructor() {
+    const myProfileUsers = sessionStorage.getItem("myProfileUsers");
+    this.userProfiles = myProfileUsers ? JSON.parse(myProfileUsers) : [];
+   }
 
   updateUserById(theUser: UserProfile) {
 
@@ -19,6 +25,8 @@ export class UserService {
     this.userProfiles.splice(index,1,theUser);
     aUser = this.userProfiles.find(u=>u.Id === theUser.Id);
     console.log('after: ' + aUser);
+
+    sessionStorage.setItem('myProfileUsers', JSON.stringify(this.userProfiles));
   }
 
   getUserByEmail(email: string) {
@@ -36,14 +44,22 @@ export class UserService {
     };
 
     this.userProfiles.push(newUserProfile);
+
+    sessionStorage.setItem('myProfileUsers', JSON.stringify(this.userProfiles));
   }
 
   login(userName: string, password: string): boolean {
     if (this.userProfiles.length > 0) {
-      const user = this.userProfiles.find(u => u.Email === userName);
+      const user: UserProfile = this.userProfiles.find(u => u.Email === userName);
       if (user) {
         if (user.Password === password) {
           this.isLoggedIn = true;
+          const userSession: AuthSession = {
+            Id: user.Id,
+            Email: user.Email,
+            Status: 'Valid'
+          };
+          sessionStorage.setItem('userAuthSession', JSON.stringify(userSession));
           return true;
         } else {
           this.isLoggedIn = false;
