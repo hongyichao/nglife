@@ -40,7 +40,8 @@ export class UserService {
       FirstName: newUser.FirstName,
       LastName: newUser.LastName,
       Email: newUser.Email,
-      Password: newUser.Password
+      Password: newUser.Password,
+      Attributes: []
     };
 
     this.userProfiles.push(newUserProfile);

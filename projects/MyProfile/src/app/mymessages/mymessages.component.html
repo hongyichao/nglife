@@ -1,1 +1,6 @@
-<p>mymessages works!</p>
+<div *ngFor="let m of myMessages; let i =index">
+    <a [routerLink]="['mymessage']">My Message</a>
+</div>
+<div>
+    <router-outlet></router-outlet>
+</div>

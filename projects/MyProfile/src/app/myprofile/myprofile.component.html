@@ -1,44 +1,50 @@
 <div class="container">
     <div class="row">
-        <form (ngSubmit)="onUpdateSubmitted()" [formGroup]="profileForm">
-            <div class="form-group">
-                <label for="firstName">*First Name</label>
-                <input type="text" id="firstName" formControlName="firstName" class="form-control" [ngModel]="theUser.FirstName">
-                <span class="alert alert-danger" *ngIf="profileForm.get('firstName').invalid && profileForm.get('firstName').touched">
-                  First Name is required
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="lastName">*Last Name</label>
-                <input type="text" id="lastName" formControlName="lastName" class="form-control" [ngModel]="theUser.LastName">
-                <span class="alert alert-danger" *ngIf="!profileForm.get('lastName').valid && profileForm.get('lastName').touched">
-                  Last Name is required
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="email">*Email</label>
-                <input type="text" id="email" formControlName="email" class="form-control" [ngModel]="theUser.Email">
-                <span class="alert alert-danger" *ngIf="!profileForm.get('email').valid && profileForm.get('email').touched">
-                  Valid Email is required
-                </span>
-            </div>
-
-            <div class="form-group" formArrayName="attributes">
-                <h4>*Attributes</h4>
-                <button class="btn btn-secondary" (click)="onAddAttribute()">Add</button>
-
-                <div *ngFor="let a of attributes;let i = index">
-                    <input type="text" class="form-control" [formControlName]="i">
-                    <span *ngIf="!validateAttribute(i)">Attribute cannot be empty</span>
+        <div class="col-md-4">
+            <form (ngSubmit)="onUpdateSubmitted()" [formGroup]="profileForm">
+                <div class="form-group">
+                    <label for="firstName">*First Name</label>
+                    <input type="text" id="firstName" formControlName="firstName" class="form-control" [ngModel]="theUser.FirstName">
+                    <span class="alert alert-danger" *ngIf="profileForm.get('firstName').invalid && profileForm.get('firstName').touched">
+                First Name is required
+              </span>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">*Last Name</label>
+                    <input type="text" id="lastName" formControlName="lastName" class="form-control" [ngModel]="theUser.LastName">
+                    <span class="alert alert-danger" *ngIf="!profileForm.get('lastName').valid && profileForm.get('lastName').touched">
+                Last Name is required
+              </span>
+                </div>
+                <div class="form-group">
+                    <label for="email">*Email</label>
+                    <input type="text" id="email" formControlName="email" class="form-control" [ngModel]="theUser.Email">
+                    <span class="alert alert-danger" *ngIf="!profileForm.get('email').valid && profileForm.get('email').touched">
+                Valid Email is required
+              </span>
                 </div>
 
+                <div class="form-group" formArrayName="attributes">
+                    <h4>*Attributes</h4>
+                    <button class="btn btn-secondary" (click)="onAddAttribute()">Add</button>
+
+                    <div *ngFor="let a of attributes;let i = index">
+                        <input type="text" class="form-control" [formControlName]="i">
+                        <span *ngIf="!validateAttribute(i)">Attribute cannot be empty</span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+            <div class="row">
+                <span *ngIf="profileForm.status === 'INVALID'">*Please provide alll required fields</span>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
-        </form>
+        </div>
+        <div class="col-md-8">
+            <app-mymessages></app-mymessages>
+        </div>
     </div>
-    <div class="row">
-        <span *ngIf="profileForm.status === 'INVALID'">*Please provide alll required fields</span>
-    </div>
+
 </div>

@@ -9,12 +9,21 @@ import { MymessageComponent } from './mymessage/mymessage.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { MyMessage } from './shared-model/myMessage';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'myprofile/:email', component: MyprofileComponent}
+  {
+    path: 'myprofile/:email', component: MyprofileComponent,
+    children: [
+      {
+        path: 'mymessage',
+        component: MymessageComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

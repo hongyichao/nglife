@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfile } from '../shared-model/userProfile';
 
 @Component({
@@ -11,9 +11,8 @@ import { UserProfile } from '../shared-model/userProfile';
 })
 export class MyprofileComponent implements OnInit {
   theUser: UserProfile;
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
 
-  tmpAttributes: string[] = ['test1','test2','test3'];
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   profileForm = new FormGroup({
     firstName : new FormControl('', Validators.required),
@@ -25,15 +24,14 @@ export class MyprofileComponent implements OnInit {
   ngOnInit() {
     const userEmail = this.route.snapshot.params['email'];
     this.theUser = this.userService.getUserByEmail(userEmail);
-
-    console.log(this.theUser);
-
-    if(!this.theUser){
-      this.theUser = {Id:999, FirstName:'test', LastName:'test', Email:'test', Password:'test'}
+    if (!this.theUser) {
+      this.router.navigate(['/signup']);
     }
 
-    for(let a of this.theUser.Attributes) {
-      (<FormArray>this.profileForm.get('attributes')).push(new FormControl(a, Validators.required));
+    if(this.theUser.Attributes.length > 0){
+      for (let a of this.theUser.Attributes) {
+        (<FormArray>this.profileForm.get('attributes')).push(new FormControl(a, Validators.required));
+      }
     }
   }
 
