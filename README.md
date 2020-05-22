@@ -2,6 +2,9 @@
 
 - This project was generated with [Angular CLI]. The project is developing based on Angular 9.
 - This project includes multiple sub-projects
+- Runs "ng update @angular/core @angular/cli" to update your Angular 
+- Runs "ng new nglife --createApplication=false" to create an empty workspace
+- Runs "ng generate application HelloAngularWorld" to create new project HelloAngularWorld in nglife workspace
 
 ## Development server
 
