@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserSignUp } from './shared-model/userSignUp';
 import { UserProfile } from './shared-model/userProfile';
 import { AuthSession } from './shared-model/authSession';
+import { MyMessage } from './shared-model/myMessage';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +10,27 @@ import { AuthSession } from './shared-model/authSession';
 export class UserService {
   isLoggedIn = false;
   userProfiles: UserProfile[] = [];
-
+  activeUserProfile: UserProfile;
 
   constructor() {
-    const myProfileUsers = sessionStorage.getItem("myProfileUsers");
+    const myProfileUsers = sessionStorage.getItem('myProfileUsers');
     this.userProfiles = myProfileUsers ? JSON.parse(myProfileUsers) : [];
+   }
+
+   getUserMessage(msgId: number): MyMessage {
+    if (this.activeUserProfile) {
+      if (this.activeUserProfile.Messages) {
+        const msg = this.activeUserProfile.Messages.find(m => m.Id === msgId);
+        return msg;
+      }
+    }
    }
 
   updateUserById(theUser: UserProfile) {
 
     let aUser: UserProfile = this.userProfiles.find(u=>u.Id === theUser.Id);
     console.log('before: '+ aUser);
-    var index = this.userProfiles.findIndex(u=>u.Id === theUser.Id);
+    const index = this.userProfiles.findIndex(u=>u.Id === theUser.Id);
 
     this.userProfiles.splice(index,1,theUser);
     aUser = this.userProfiles.find(u=>u.Id === theUser.Id);
@@ -31,6 +41,9 @@ export class UserService {
 
   getUserByEmail(email: string) {
     const theUser = this.userProfiles.find(u => u.Email === email);
+    if (theUser) {
+      this.activeUserProfile = theUser;
+    }
     return theUser;
   }
 
@@ -41,7 +54,8 @@ export class UserService {
       LastName: newUser.LastName,
       Email: newUser.Email,
       Password: newUser.Password,
-      Attributes: []
+      Attributes: [],
+      Messages: []
     };
 
     this.userProfiles.push(newUserProfile);

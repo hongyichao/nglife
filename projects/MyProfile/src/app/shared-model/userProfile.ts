@@ -1,3 +1,5 @@
+import { MyMessage } from './myMessage';
+
 export class UserProfile {
   Id: number;
   FirstName: string;
@@ -5,5 +7,5 @@ export class UserProfile {
   Email: string;
   Password: string;
   Attributes?: string[];
-  Messages?: string[];
+  Messages?: MyMessage[];
 }
