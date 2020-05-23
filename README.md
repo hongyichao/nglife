@@ -7,7 +7,9 @@
 - Runs "ng generate application HelloAngularWorld" to create new project HelloAngularWorld in nglife workspace
 
 ## Development server
-
+- Run `ng serve --project=MyProfile --port 4300`. Navigate to `http://localhost:4300/` to see MyProfile
+  - use Angular Route, Router, Service, template-driven and reactive forms
+  - steps : 1) register 2) login 3) add attributes or messages 4) update to save info to session storage
 - Run `ng serve --project=HelloAngularWorld`. Navigate to `http://localhost:4200/` to see HelloAngularWorld.
   - use data binding
 - Run `ng serve --project=StashGoods`. Navigate to `http://localhost:4200/` to see StashGoods.
