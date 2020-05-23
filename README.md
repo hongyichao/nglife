@@ -16,6 +16,7 @@
 2) ### SignUp 
   - Run `ng serve --project=SignUp`. Navigate to `http://localhost:4200/` to see SignUp.
   - use template-driven NgForm with service and routes to view/add/update users
+  - http://nglife-signup.s3-website-us-east-1.amazonaws.com
   
 3) ### HellowAngularWorld 
   - Run `ng serve --project=HelloAngularWorld`. Navigate to `http://localhost:4200/` to see HelloAngularWorld.
