@@ -18,10 +18,8 @@ const routes: Routes = [
   {
     path: 'myprofile/:email', component: MyprofileComponent,
     children: [
-      {
-        path: 'mymessage/:id',
-        component: MymessageComponent
-      }
+      { path: 'mymessage', component: MymessageComponent},
+      { path: 'mymessage/:id', component: MymessageComponent}
     ]
   }
 ];

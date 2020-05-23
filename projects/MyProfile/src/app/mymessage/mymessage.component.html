@@ -1,1 +1,5 @@
-<p>mymessage works!</p>
+<form (ngSubmit)="onProcessMessage(msgForm)" #msgForm="ngForm">
+    <textarea rows="10" cols="30" name="msgText" [ngModel]="myMessage.Text"></textarea>
+    <button type="submit" class="btn btn-primary" *ngIf="editMode==='add'">Add</button>
+    <button type="submit" class="btn btn-warning" *ngIf="editMode==='update'">Update</button>
+</form>

@@ -11,23 +11,38 @@ export class UserService {
   isLoggedIn = false;
   userProfiles: UserProfile[] = [];
   activeUserProfile: UserProfile;
+  activeMessage: MyMessage;
+  myMessages: MyMessage[] = [];
 
   constructor() {
     const myProfileUsers = sessionStorage.getItem('myProfileUsers');
     this.userProfiles = myProfileUsers ? JSON.parse(myProfileUsers) : [];
    }
 
+   addUserMessage(msgText: string, timestamp: string): number {
+    const msgId = this.myMessages.length > 0 ? this.myMessages[this.myMessages.length - 1].Id + 1 : 1;
+    this.myMessages.push({Id: msgId, Text: msgText, Timestamp: timestamp});
+    console.log("msgCount: " + this.myMessages.length);
+    return msgId;
+   }
+
    getUserMessage(msgId: number): MyMessage {
-    if (this.activeUserProfile) {
-      if (this.activeUserProfile.Messages) {
-        const msg = this.activeUserProfile.Messages.find(m => m.Id === msgId);
-        return msg;
-      }
+    if (this.myMessages.length > 0) {
+      const msg = this.myMessages.find(m => m.Id === msgId);
+      console.log(msg);
+      return msg;
+    }
+   }
+
+   updateUserMessage(updatedMsg: MyMessage) {
+    if (this.myMessages.length > 0) {
+      const index = this.myMessages.findIndex(m => m.Id === updatedMsg.Id);
+      this.myMessages.splice(index, 1, updatedMsg);
     }
    }
 
   updateUserById(theUser: UserProfile) {
-
+    theUser.Messages = this.myMessages;
     let aUser: UserProfile = this.userProfiles.find(u=>u.Id === theUser.Id);
     console.log('before: '+ aUser);
     const index = this.userProfiles.findIndex(u=>u.Id === theUser.Id);
@@ -43,6 +58,7 @@ export class UserService {
     const theUser = this.userProfiles.find(u => u.Email === email);
     if (theUser) {
       this.activeUserProfile = theUser;
+      this.myMessages = theUser.Messages;
     }
     return theUser;
   }

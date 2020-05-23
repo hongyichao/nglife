@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MyMessage } from '../shared-model/myMessage';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-mymessages',
@@ -8,15 +9,12 @@ import { MyMessage } from '../shared-model/myMessage';
 })
 export class MymessagesComponent implements OnInit {
   @Input() myMessages: MyMessage[];
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
+    this.myMessages = this.userService.myMessages;
 
-  }
-
-  onAddMessage() {
-    console.log("adding...");
-    this.myMessages.push({Id: 1, Text: 'test123', Timestamp: '2020-05-10'});
-    console.log(this.myMessages);
   }
 }
+
+

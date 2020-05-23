@@ -1,9 +1,15 @@
-<div>
-    <button type="button" class="btn btn-primary" (click)="onAddMessage()">Add Message</button>
-</div>
-<div *ngFor="let m of myMessages; let i =index">
-    <a [routerLink]="['mymessage',1]">{{m.Timestamp}}</a>
-</div>
-<div>
-    <router-outlet></router-outlet>
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <button type="button" class="btn btn-primary" [routerLink]="['mymessage']">Add Message</button>
+        </div>
+        <div *ngFor="let m of myMessages; let i =index">
+            <a [routerLink]="['mymessage',m.Id]">{{m.Timestamp}}</a>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
