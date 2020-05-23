@@ -592,6 +592,123 @@
           }
         }
       }
+    },
+    "BookSearch": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/BookSearch",
+      "sourceRoot": "projects/BookSearch/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/BookSearch",
+            "index": "projects/BookSearch/src/index.html",
+            "main": "projects/BookSearch/src/main.ts",
+            "polyfills": "projects/BookSearch/src/polyfills.ts",
+            "tsConfig": "projects/BookSearch/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/BookSearch/src/favicon.ico",
+              "projects/BookSearch/src/assets"
+            ],
+            "styles": [
+              "projects/BookSearch/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/BookSearch/src/environments/environment.ts",
+                  "with": "projects/BookSearch/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "BookSearch:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "BookSearch:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "BookSearch:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/BookSearch/src/test.ts",
+            "polyfills": "projects/BookSearch/src/polyfills.ts",
+            "tsConfig": "projects/BookSearch/tsconfig.spec.json",
+            "karmaConfig": "projects/BookSearch/karma.conf.js",
+            "assets": [
+              "projects/BookSearch/src/favicon.ico",
+              "projects/BookSearch/src/assets"
+            ],
+            "styles": [
+              "projects/BookSearch/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/BookSearch/tsconfig.app.json",
+              "projects/BookSearch/tsconfig.spec.json",
+              "projects/BookSearch/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/BookSearch/e2e/protractor.conf.js",
+            "devServerTarget": "BookSearch:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "BookSearch:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "HelloAngularWorld",
