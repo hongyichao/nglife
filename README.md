@@ -11,6 +11,7 @@
   - Run `ng serve --project=MyProfile --port 4300`. Navigate to `http://localhost:4300/` to see MyProfile
   - use Angular Route, Router, Service, template-driven and reactive forms
   - steps : 1) register 2) login 3) add attributes or messages 4) update to save info to session storage
+  - http://nglife-myprofile.s3-website-us-east-1.amazonaws.com
   
 2) ### SignUp 
   - Run `ng serve --project=SignUp`. Navigate to `http://localhost:4200/` to see SignUp.
