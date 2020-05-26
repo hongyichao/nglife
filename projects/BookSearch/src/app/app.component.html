@@ -1,4 +1,26 @@
-<input type="text" [(ngModel)]="bookToSearch">
-<div *ngFor="let b of books | bookFilter:bookToSearch">
-    {{b | uppercase}}
+<div class="container">
+    <br><br>
+    <div>
+        Search by
+        <label class="radio-inline"><input type="radio" id="radTitle" [(ngModel)]="bookFilterParams.SelectedMethod" name="searchMethod" value="Title">Title</label>
+        <label class="radio-inline"><input type="radio" id="radAuthor" [(ngModel)]="bookFilterParams.SelectedMethod" name="searchMethod" value="Author">Author</label>
+    </div>
+    {{selectedMethod}}
+    <input class="form-control" type="text" [(ngModel)]="bookFilterParams.SearchStr">
+    <br><br>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let b of books | bookFilter:bookFilterParams">
+                <td>{{b.Title | uppercase}}</td>
+                <td>{{b.Author}}</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

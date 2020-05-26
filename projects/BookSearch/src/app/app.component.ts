@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Book } from './SharedModels/book';
+import { BookFilterParams } from './SharedModels/book-filter-params';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   bookToSearch: string;
-  books: string[] = ['AngularJS', 'Angular2', 'Angular3', 'Angular4', 'Angular5', 'Angular6', 'Angular7', 'Angular8', 'Angular9',
-  'ReactJS', 'Vu.js', 'jQuery', 'Html: new to professional', 'CSS rocks!'
+  bookFilterParams: BookFilterParams;
+  selectedMethod: string;
+  books: Book[] = [
+    {Title: 'AngularJS', Author: 'Lucas'}, {Title: 'Angular 2', Author: 'Terry'}, {Title: 'Angular 3', Author: 'Michael'},
+    {Title: 'Angular 4', Author: 'Lucas'}, {Title: 'Angular 5', Author: 'Terry'}, {Title: 'Angular 6', Author: 'John'},
+    {Title: 'Angular 7', Author: 'Alen'}, {Title: 'Angular 8', Author: 'John'}, {Title: 'Angular 7', Author: 'Michael'},
+    {Title: 'ReactJS', Author: 'Lucas'},
+    {Title: 'Vu.js', Author: 'Hongyi'},
+    {Title: 'jQuery', Author: 'Hongyi'},
+    {Title: 'Html: new to professional', Author: 'Hongyi'},
+    {Title: 'CSS rocks!', Author: 'Hongyi'}
 ];
 
   constructor() {
     this.bookToSearch = '';
+    this.bookFilterParams = {SelectedMethod: 'Title'};
   }
 }
