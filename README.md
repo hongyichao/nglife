@@ -11,20 +11,23 @@
   - Run `ng serve --project=MyProfile --port 4300`. Navigate to `http://localhost:4300/` to see MyProfile
   - use Angular Route, Router, Service, template-driven and reactive forms
   - steps : 1) register 2) login 3) add attributes or messages 4) update to save info to session storage
-  - http://nglife-myprofile.s3-website-us-east-1.amazonaws.com
+  - http://nglife-myprofile.s3-website-us-east-1.amazonaws.com  
   
 2) ### SignUp 
   - Run `ng serve --project=SignUp`. Navigate to `http://localhost:4200/` to see SignUp.
   - use template-driven NgForm with service and routes to view/add/update users
   - http://nglife-signup.s3-website-us-east-1.amazonaws.com
   
-3) ### HellowAngularWorld 
+3) ### BookSearch 
+  - Run `ng serve --project=BookSearch`. Navigate to `http://localhost:4200/` to see BookSearch.
+  
+4) ### HellowAngularWorld 
   - Run `ng serve --project=HelloAngularWorld`. Navigate to `http://localhost:4200/` to see HelloAngularWorld.
   - use data binding
-4) ### StashGoods 
+5) ### StashGoods 
   - Run `ng serve --project=StashGoods`. Navigate to `http://localhost:4200/` to see StashGoods.
   - use @Output() event emitter and @Input()
-5) ### UserService 
+6) ### UserService 
   - Run `ng serve --project=UserService`. Navigate to `http://localhost:4200/` to see UserService.
   - use service
 
