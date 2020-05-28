@@ -10,7 +10,7 @@ export class AuthService {
     const storageUsers = sessionStorage.getItem('signUpUsers');
     this.users = storageUsers ? JSON.parse(storageUsers) : [];
 
-    if (!this.users) {
+    if (this.users.length === 0) {
       this.users = [{Id: 1, FirstName: 'John1', LastName: 'Z', Email: 'john1z@abc.com', Password: 'Password1'},
       {Id: 2, FirstName: 'John2', LastName: 'Z', Email: 'john2z@abc.com', Password: 'Password2'},
       {Id: 3, FirstName: 'John3', LastName: 'Z', Email: 'john3z@abc.com', Password: 'Password3'}
