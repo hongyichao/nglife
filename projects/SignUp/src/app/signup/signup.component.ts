@@ -60,6 +60,8 @@ export class SignupComponent implements OnInit {
 
       this.auth.updateUser(this.theUser);
     }
+
+    this.userRegistration.reset();
   }
 
   OnResetForm() {
