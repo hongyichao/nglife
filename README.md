@@ -22,7 +22,7 @@
   - Run `ng serve --project=BookSearch`. Navigate to `http://localhost:4200/` to see BookSearch.
   - http://nglife-booksearch.s3-website-us-east-1.amazonaws.com/
   
-4) ### HellowAngularWorld 
+4) ### HelloAngularWorld 
   - Run `ng serve --project=HelloAngularWorld`. Navigate to `http://localhost:4200/` to see HelloAngularWorld.
   - use data binding
 5) ### StashGoods 
